@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <header>
+<title>Remote_Window</title>
+
+<SCRIPT language=JavaScript>
+    let name = window.name;
+    window.name = "Google Classroom";
+    if ((navigator.appName == "Microsoft Internet Explorer")&&(navigator.platform != "MacPPC"))
+    {
+    document.write("<OBJECT ID=\"VAtCtrl\" WIDTH=362 HEIGHT=310 name=\"VAtCtrl\"");
+    document.write(" CLASSID=CLSID:210D0CBC-8B17-48D1-B294-1A338DD2EB3A");
+    document.write(" CODEBASE=\"http://60.248.39.149:1025/VatDec.cab#version=1,0,0,48\">");
+    document.write("<PARAM NAME=\"Url\" VALUE=\"http://60.248.39.149:1025/cgi-bin/control.cgi\">");
+    document.write("<PARAM NAME=\"VSize\" VALUE=\"SIF\">");
+    document.write("<PARAM NAME=\"Language\" VALUE=\"en\">");
+    document.write("<PARAM NAME=\"Deblocking\" VALUE=\"true\">");
+    document.write("<PARAM NAME=\"DisplayTimeFormat\" VALUE=\"1\">");
+    document.write("<PARAM NAME=\"DigitalZoomEnableChk\" VALUE=\"true\">");
+    document.write("<PARAM NAME=\"DigitalZoomEdit\" VALUE=\"true\">");
+    document.write("</OBJECT>");
+    }function reset(){
+        var iframe = document.getElementById("display")
+        iframe.setAttribute("src", "")
+        var input = document.getElementById("inputURL")
+        input.value = ""
+    }
+    function openInput(iframe){
+        var input = document.getElementById("inputURL")
+        var inputURl = String(input.value)
+        var iframe = document.getElementById(iframe)
+        iframe.setAttribute("src", inputURl)
+    }
+    function openInputWithEnterKey(iframe, e){
+        var input = document.getElementById("inputURL")
+        var inputURl = String(input.value)
+        var iframe = document.getElementById(iframe)
+if(e == 13){ 
+        iframe.setAttribute("src", inputURl)
+    }else{
+        //does nothing
+    }
+    }
+    function openInputInWindow(){
+        var input = document.getElementById("inputURL")
+        var inputURl = String(input.value)
+        open(inputURl)
+    }
+    </SCRIPT>
+    </header>
+    <body>
+        <h1>Remote Window</h1>
+        <input type="text" id="inputURL" placeholder="URL" onkeypress="openInputWithEnterKey('display', event);"><button onclick="openInput('display')">Display URL</button><button onclick="openInputInWindow();">Open in new tab</button><button onclick="reset()">Reset</button>
+    <iframe id="display" src =""width="100%" height="665">
+        </iframe>
+        <style>
+            body {
+                background-color: white;
+            }
+        </style>
+    </body>
+</html>
